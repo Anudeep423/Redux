@@ -1,14 +1,26 @@
-import React,{useState} from 'react'
+import React from 'react'
+import {connect} from "react-redux"
+import Home from "./Home"
+import Profile from "./Profile"
 
-function App() {
-  const [a,setA] = useState(0)
+
+
+function App(props) {
+  console.log(props);
   return (
     <>
-    {console.log("Component rendered")}
-    <h1>App a = {a} </h1>
-    <button onClick={ () => { setA(0) } } > increment </button>
+    <h1>App Component name = {props.name} age = {props.age} </h1>
+    <Home />
+    <Profile />
     </>
   )
+};
+
+const mapStateToProps = (state) => {
+  return state
 }
 
-export default App
+
+
+
+export default connect(mapStateToProps)(App)
